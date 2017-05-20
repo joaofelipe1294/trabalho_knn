@@ -42,7 +42,6 @@ class KNN:
 		precision = float(corrects) / float(len(self.y_test))
 		print('Precision : %f' % precision)
 
-
 	def calc_confusion_matrix(self):
 		confusion_matrix = np.zeros((10,10), np.uint32)
 		for index in range(0, len(self.y_test)):
