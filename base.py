@@ -31,7 +31,7 @@ class BaseLoader:
 		print("Imagens carregadas")
 		return images, labels, names
 		
-	def load_text_values(self, base_path, divisor = ' '):
+	def load_text_values(self, base_path, lines_number = None, divisor = ' '):
 		#metodo utilizado para carregar os valores de uma base do tipo txt
 		print('iniciando leitura arquivo')
 		X = [] #lista com os valores
@@ -44,6 +44,9 @@ class BaseLoader:
 				[float(i) for i in values] #converte valores para float
 				y.append(int(values.pop(len(values) - 1))) #isola o valor referente a label
 				X.append(values)	
+		if lines_number:
+			y = y[:lines_number]
+			X = X[:lines_number]
 		X = np.array( X, np.float32) #retorna um np.array do tipo float porque os valores da base 150k sao do tipo fload
 		return X, y
 
