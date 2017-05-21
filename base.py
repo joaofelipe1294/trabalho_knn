@@ -6,7 +6,7 @@ import cv2
 
 class BaseLoader:
 
-	def load_images(self, base_path, labels_file_path, divisor = ' '):
+	def load_images(self, base_path, labels_file_path, samples_number = None ,divisor = ' '):
 		#metodo utilizado para carregar os valores da base de imagens
 		print("Carregando imagens de " + base_path + " ...")
 		names_txt = []
@@ -28,6 +28,11 @@ class BaseLoader:
 			images.append(cv2.imread(image_path, 0))  #le a imagem
 			labels.append(label)
 			names.append(path)
+		if samples_number:
+			images = images[:samples_number]
+			labels = labels[:samples_number]
+			names = names[:samples_number]
+
 		print("Imagens carregadas")
 		return images, labels, names
 		

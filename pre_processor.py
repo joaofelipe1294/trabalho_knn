@@ -38,4 +38,6 @@ class PreProcessor:
 				avrage_image = np.array(avrage_image, np.uint8)
 				templates.append(avrage_image)
 				template_labels.append(label)
+		templates = self.prepare_image_values(templates)
+		template_labels = np.array(template_labels, np.uint8)
 		return templates, template_labels
